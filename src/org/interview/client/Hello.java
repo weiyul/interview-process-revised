@@ -91,6 +91,8 @@ public class Hello implements EntryPoint {
 	    nameField.setText("Gwt User");
         // We can add style names to widgets
         sendButton.addStyleName("sendButton");
+        //git diff":Change the color of the Send button by adding the CSS class red 
+        sendButton.addStyleName("red");
         
         // Focus the cursor on the name field when the app loads
         nameField.setFocus(true);
