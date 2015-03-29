@@ -126,7 +126,7 @@ public class Hello implements EntryPoint {
         clearPersonButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
             	personName.setText("");
-            	personName.setTextpersonName.setText("");(personName.setText("");"");
+            	personId.setText("");
                 
             }
         });
