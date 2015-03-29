@@ -81,14 +81,15 @@ public class Hello implements EntryPoint {
 	/**
 	 * Create a remote service proxy to talk to the server-side Count call service
 	 */
-	private  finalCountCallServiceAsync countCallService = GWT.create(CountCallService.class);
-	
+	private  final CountCallServiceAsync countCallService = GWT.create(CountCallService.class);
+	 
+
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
 		
-	    nameField.setText("Gwt User");
+	nameField.setText("Gwt User");
         // We can add style names to widgets
         sendButton.addStyleName("sendButton");
         //git diff":Change the color of the Send button by adding the CSS class red 
@@ -119,6 +120,14 @@ public class Hello implements EntryPoint {
                 dialogBox.hide();
                 sendButton.setEnabled(true);
                 sendButton.setFocus(true);
+            }
+        });
+        
+        //git diff: Use the countCallButton as the action button and countCallLabel to show the number of succeeded calls
+        countCallButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                countCallLabel.setText(numberOfCompletedCall);
+
             }
         });
         
@@ -185,8 +194,25 @@ public class Hello implements EntryPoint {
                                 serverResponseLabel.setHTML(result);
                                 dialogBox.center();
                                 closeButton.setFocus(true);
+
                             }
                         });
+                //git diff:Use the CountCallService to add and show number of call message successfully sent to the server
+                countCallService.countCall(numberOfCompletedCall, new AsyncCallback<Integer>() {
+   			public void onSuccess(Integer result) {
+     				numberOfCompletedCall=result;
+     				dialogBox.setText("Call message successfully sent to the server");
+     				dialogBox.center();
+     				countCallButton.setFocus(true);
+   			}
+ 
+   			public void onFailure(Throwable caught) {
+			// Show the RPC error message to the user
+                                dialogBox.setText("Cannot get number of call message successfully sent to the server");
+                                dialogBox.center();
+                                countCallButton.setFocus(true);
+			}
+		});
             }
         }
 
