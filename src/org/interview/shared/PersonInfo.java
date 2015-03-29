@@ -24,8 +24,9 @@ public class PersonInfo implements IsSerializable {
     public ArrayList<LocationInfo> getAddresses() { return addresses; }
     public void setAddresses(ArrayList<LocationInfo> addresses) { this.addresses = addresses; }
     
+    //git diff: Implement the method getName of the PersonInfo bean to have a shortcut on displaying a user information.
     public String getName(){
-        return "";
+        return firstName+" "+lastName;
     }
     
 }
