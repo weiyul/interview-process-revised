@@ -81,7 +81,7 @@ public class Hello implements EntryPoint {
 	/**
 	 * Create a remote service proxy to talk to the server-side Count call service
 	 */
-	private final CountCallServiceAsync countCallService = GWT.create(CountCallService.class);
+	private  finalCountCallServiceAsync countCallService = GWT.create(CountCallService.class);
 	
 	/**
 	 * This is the entry point method.
@@ -119,6 +119,15 @@ public class Hello implements EntryPoint {
                 dialogBox.hide();
                 sendButton.setEnabled(true);
                 sendButton.setFocus(true);
+            }
+        });
+        
+        //git diff: Add the handler on the button 'Clear person information' the clear the person's text box.
+        clearPersonButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+            	personName.setText("");
+            	personName.setTextpersonName.setText("");(personName.setText("");"");
+                
             }
         });
         
